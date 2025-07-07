@@ -1,5 +1,4 @@
 from dotenv import load_dotenv
-
 from livekit import agents
 from livekit.agents import AgentSession, Agent, RoomInputOptions
 from livekit.plugins import (
@@ -15,7 +14,7 @@ class Assistant(Agent):
     def __init__(self) -> None:
         super().__init__(
             instructions=AGENT_INSTRUCTION,
-            llm=google.beta.realtime.RealtimeModel(
+            llm=openai.realtime.RealtimeModel(
             voice="Aoede",
             temperature=0.8,
         ),
