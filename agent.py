@@ -8,8 +8,6 @@ from livekit.plugins import google
 from prompts import AGENT_INSTRUCTION, SESSION_INSTRUCTION
 from tools import get_weather, search_web, send_email
 load_dotenv()
-
-
 class Assistant(Agent):
     def __init__(self) -> None:
         super().__init__(
@@ -25,14 +23,10 @@ class Assistant(Agent):
             ],
 
         )
-        
-
-
 async def entrypoint(ctx: agents.JobContext):
     session = AgentSession(
         
     )
-
     await session.start(
         room=ctx.room,
         agent=Assistant(),
@@ -44,13 +38,9 @@ async def entrypoint(ctx: agents.JobContext):
             noise_cancellation=noise_cancellation.BVC(),
         ),
     )
-
     await ctx.connect()
-
     await session.generate_reply(
         instructions=SESSION_INSTRUCTION,
     )
-
-
 if __name__ == "__main__":
     agents.cli.run_app(agents.WorkerOptions(entrypoint_fnc=entrypoint))
