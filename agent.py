@@ -13,7 +13,7 @@ class Assistant(Agent):
         super().__init__(
             instructions=AGENT_INSTRUCTION,
             llm=openai.realtime.RealtimeModel(
-            voice="Aoede",
+            voice="fable",
             temperature=0.8,
         ),
             tools=[
